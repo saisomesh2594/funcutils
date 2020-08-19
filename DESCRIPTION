@@ -1,0 +1,20 @@
+Package: funcutils
+Title: Utility Functions
+Version: 0.1
+Authors@R: 
+    person(given = "Somesh",
+           family = "Sai",
+           role = c("aut", "cre"),
+           email = "somesh.sai@mdc-berlin.de")
+Description: This package provides a set of utility functions.
+Depends:
+  Seurat,
+  ggplot2,
+  cowplot,
+  data.table,
+  DT,
+  dplyr
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
