@@ -60,3 +60,28 @@ seurat2cloupe <- function(object, reduction, dims, metadata, keyword, opdir){
   
   
 }
+
+
+#' Get dimensions of counts, data and scale.data slots in all the assays in a seurat object
+#'
+#' This function returns a dataframe listing dimensions for counts, data and scale.data slot
+#' in RNA and other present assays
+#'
+#' @param obj A Seurat Object
+#' @return A dataframe printed on the console
+#' @export
+getdims <- function(obj){
+  all.ass <- Assays(obj)
+  tmp <- as.data.frame(matrix(nrow = length(all.ass)*3, ncol = 2))
+  colnames(tmp) <- c("features", "cells")
+  rownames(tmp) <- as.vector(unname(sapply(all.ass, function(x) paste0(x,"_", c("counts","data","scale-data"),sep=""))))
+  tmp1 <- lapply(all.ass, function(x){
+    tmp2 = list()
+    tmp2[[1]] = obj[[x]]@counts@Dim
+    tmp2[[2]] = obj[[x]]@data@Dim
+    tmp2[[3]] = dim(obj[[x]]@scale.data)
+    return(tmp2)
+  })
+  for(i in 1:length(tmp1)) tmp[((i*3)-2):(i*3), ] <- rlist::list.rbind(tmp1[[i]])
+  tmp
+}
