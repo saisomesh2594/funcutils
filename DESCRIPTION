@@ -1,14 +1,15 @@
 Package: funcutils
 Title: Utility Functions
-Version: 0.1
+Version: 0.2
 Authors@R: 
     person(given = "Somesh",
            family = "Sai",
            role = c("aut", "cre"),
            email = "somesh.sai@mdc-berlin.de")
 Description: This package provides a set of utility functions.
+Imports:
+  Seurat
 Depends:
-  Seurat,
   ggplot2,
   cowplot,
   data.table,
